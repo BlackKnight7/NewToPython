@@ -3,7 +3,7 @@ from Demos.SendSimpleEmail.SendSimpleEmail import send_mail
 import json
 
 mail_server = "smtp.163.com"
-
+# outlook change
 
 def readConfig():
     with open('mailUsers.json') as data_file:

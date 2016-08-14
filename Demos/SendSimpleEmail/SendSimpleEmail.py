@@ -22,3 +22,36 @@ def send_mail(mail_server, mail_user, mail_pass, to_list, sub, content):
         return False
 
 
+
+# def send_mail(recipient, subject, message):
+#
+#     import smtplib
+#     from email.MIMEMultipart import MIMEMultipart
+#     from email.MIMEText import MIMEText
+#
+#     username = "xxx@outlook.com"
+#     password = "xxx"
+#
+#     msg = MIMEMultipart()
+#     msg['From'] = username
+#     msg['To'] = recipient
+#     msg['Subject'] = subject
+#     msg.attach(MIMEText(message))
+#
+#     try:
+#         print('sending mail to ' + recipient + ' on ' + subject)
+#
+#         mailServer = smtplib.SMTP('smtp-mail.outlook.com', 587)
+#         mailServer.ehlo()
+#         mailServer.starttls()
+#         mailServer.ehlo()
+#         mailServer.set_debuglevel(1)
+#         mailServer.login(username, password)
+#         mailServer.sendmail(username, recipient, msg.as_string())
+#         mailServer.close()
+#
+#     except Exception as e:
+#         print(str(e))
+#
+#
+# send_mail('xxx@qq.com', 'Sent using Python', 'May the force be with you.')
