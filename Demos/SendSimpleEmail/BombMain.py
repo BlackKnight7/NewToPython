@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from Demos.SendSimpleEmail.SendSimpleEmail import send_mail
 import json
+import time
 
 mail_server = "smtp-mail.outlook.com"
 
@@ -38,9 +39,10 @@ if __name__ == '__main__':
 
     for mail_to in config['mailto_list']:
         for mail_user in config["mail_users"]:
-            for i in range(0, 5):
-                if send_mail(mail_server, mail_user["name"], mail_user['pass'], mail_to, "Top Stories",
-                             generateContent()):
+            for i in range(0, 30):
+                if send_mail(mail_server, mail_user["name"], mail_user['pass'], mail_to, "Top Stories", generateContent()):
                     print("发送成功")
                 else:
                     print("发送失败")
+
+                time.sleep(30)
