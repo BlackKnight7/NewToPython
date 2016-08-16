@@ -30,3 +30,4 @@ The solution in this case is to escape the ampersand with a caret (^), so it is 
 At end, I found it's really hard to debug python on vim. but lucky I found we can use vim in Pycharm:
 https://www.jetbrains.com/help/pycharm/2016.1/tutorial-using-vim-editor-emulation-in-pycharm.html
 
+4. 
