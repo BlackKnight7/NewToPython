@@ -25,9 +25,9 @@ The solution in this case is to escape the ampersand with a caret (^), so it is 
 
 2. get error when add curl.cmd, the 64 bit machine use path 'mingw64', 32 bit maching use path 'mingw'
 
-3. get error when installing Vundle, try my config file __vimrc in git.
+3. get error when installing Vundle, try my config file __vimrc in git, or .vimrc for linux.
 
 At end, I found it's really hard to debug python on vim. but lucky I found we can use vim in Pycharm:
 https://www.jetbrains.com/help/pycharm/2016.1/tutorial-using-vim-editor-emulation-in-pycharm.html
 
-4. 
+Guy, my bad, the IdeaVim is not perfect as my expected. So let's continue on learning how to degug in vim.
