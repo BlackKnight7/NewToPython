@@ -1,12 +1,14 @@
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
+" ============================================================================
+" Plugins
+" ============================================================================
 set rtp+=$VIM/vimfiles/bundle/Vundle.vim/  
-call vundle#begin('$VIM/vimfiles/bundle/')  
+call vundle#begin('$VIM/vimfiles/bundle/')
 
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
-
 Plugin 'tmhedberg/SimpylFold'  
 Plugin 'scrooloose/syntastic'
 Plugin 'nvie/vim-flake8'
@@ -15,17 +17,44 @@ Plugin 'jnurmine/Zenburn'
 Plugin 'scrooloose/nerdtree'
 Plugin 'jistr/vim-nerdtree-tabs'
 Plugin 'kien/ctrlp.vim'
+Plugin 'tpope/vim-fugitive'
 Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
-
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
 
+
+" ============================================
+" Plugin settings
+" ============================================
+" vim-colors-solarized
+if has('gui_running')
+  set background=dark
+  colorscheme solarized
+else
+  colorscheme Zenburn
+endif
+
+" nerdtree
+let NERDTreeIgnore=['\.pyc$', '\~$'] "ignore files in NERDTree
+
+
+" ============================================================================
+" settings
+" ============================================================================
 " Code Folding
 set foldmethod=indent
 set foldlevel=99
 nnoremap <space> za
+" suport utf-8
+set encoding=utf-8
+" show line number
+set nu
 
+
+" ============================================
+" Python settings
+" ============================================
 " Python formats
 au BufNewFile,BufRead *.py
     \ set tabstop=4 |
@@ -43,20 +72,11 @@ au BufNewFile,BufRead *.js,*.html,*.css
 
 let python_highlight_all=1
 syntax on
-let NERDTreeIgnore=['\.pyc$', '\~$'] "ignore files in NERDTree
-set encoding=utf-8
-set nu
 
-" colorscheme settings
-if has('gui_running')
-  set background=dark
-  colorscheme solarized
-else
-  colorscheme Zenburn
-endif
-call togglebg#map("<F5>")
-
-" Default settins from instration
+" ============================================
+" Default settings after install
+" ============================================
+" we can ingore these
 source $VIMRUNTIME/vimrc_example.vim
 source $VIMRUNTIME/mswin.vim
 behave mswin
