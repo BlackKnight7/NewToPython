@@ -1,5 +1,6 @@
 import random
 import operator
+import ipdb
 
 for i in range(0, 10):
     a = random.randint(1, 10)
@@ -17,4 +18,5 @@ for i in range(0, 10):
     if answer == result:
         print("Success")
     else:
+        ipdb.set_trace()
         print("Failed")
