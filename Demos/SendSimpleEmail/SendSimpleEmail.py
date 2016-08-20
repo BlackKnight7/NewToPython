@@ -8,7 +8,7 @@ def send_mail(mail_server, mail_user, mail_pass, mail_to, subject, content):
     msg['From'] = mail_user
     msg['To'] = mail_to
     msg['Subject'] = subject
-    msg.attach(MIMEText(content))
+    msg.attach(MIMEText(content.encode('utf-8'), 'plain', 'utf-8'))
 
     try:
         mailServer = smtplib.SMTP(mail_server, 587)
