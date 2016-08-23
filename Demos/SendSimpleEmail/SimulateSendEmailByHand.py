@@ -26,9 +26,18 @@
 #         print(str(e))
 #         return False
 
+
+from pymouse import PyMouse
+from pykeyboard import PyKeyboard
+
+m = PyMouse()
+k = PyKeyboard()
+
 def simple_test():
     print("start test")
-
+    x_dim, y_dim = m.screen_size()
+    m.click(x_dim/2, y_dim/2)
+    k.type_string('hello, word!')
     print("end test")
 
 
