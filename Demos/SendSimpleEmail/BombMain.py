@@ -9,9 +9,6 @@ from bs4 import BeautifulSoup
 mail_server = "smtp-mail.outlook.com"
 
 urls = ['http://www.chinadaily.com.cn/',
-        'http://www.nytimes.com/',
-        'http://www.ft.com/home/uk',
-        'http://uk.reuters.com/',
         'http://www.cbsnews.com/',
         'http://www.nbcnews.com/',
         'http://www.foxnews.com/',
@@ -27,15 +24,19 @@ def readConfig():
 
 
 def generateContent():
-    url = random.choice(urls)
-    response = urllib2.urlopen(url)
-    html = response.read()
-    soup = BeautifulSoup(html, "html.parser")
-    text = ''
-    for pSingle in soup.find_all('p'):
-        if len(text) < 100:
-            text += pSingle.get_text()
-    return text
+    try:
+        url = random.choice(urls)
+        response = urllib2.urlopen(url)
+        html = response.read()
+        soup = BeautifulSoup(html, "html.parser")
+        text = ''
+        for pSingle in soup.find_all('p'):
+            if len(text) < 100:
+                text += pSingle.get_text()
+        return text
+    except:
+        print("生成内容失败， 重新生成")
+        return generateContent()
 
 
 if __name__ == '__main__':

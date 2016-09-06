@@ -33,7 +33,7 @@ def send_mail(mail_server, mail_user, mail_pass, mail_to, subject, content):
         m.click(1920 + 260, 350)
         time.sleep(1)
         k.type_string(content)
-        time.sleep(1)
+        time.sleep(2)
 
         # click send mail
         m.click(1920 + 140, 118)
