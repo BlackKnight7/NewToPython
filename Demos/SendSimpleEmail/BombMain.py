@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from Demos.SendSimpleEmail.SendSimpleEmail import send_mail
+from Demos.SendSimpleEmail.SimulateSendEmailByHand import send_mail
 import json
 import time
 import urllib2
@@ -8,16 +8,15 @@ from bs4 import BeautifulSoup
 
 mail_server = "smtp-mail.outlook.com"
 
-urls = ['http://news.sohu.com/',
-        'http://news.qq.com/',
-        'http://news.163.com/',
-        'http://news.ifeng.com/',
-        'http://www.xinhuanet.com/',
-        'http://www.people.com.cn/',
-        'http://www.chinanews.com/',
-        'http://news.cctv.com/',
-        'http://www.huanqiu.com/',
-        'http://news.baidu.com/']
+urls = ['http://www.chinadaily.com.cn/',
+        'http://www.nytimes.com/',
+        'http://www.ft.com/home/uk',
+        'http://uk.reuters.com/',
+        'http://www.cbsnews.com/',
+        'http://www.nbcnews.com/',
+        'http://www.foxnews.com/',
+        'http://www.huffingtonpost.com/'
+        ]
 
 
 # outlook change
@@ -34,7 +33,8 @@ def generateContent():
     soup = BeautifulSoup(html, "html.parser")
     text = ''
     for pSingle in soup.find_all('p'):
-        text += pSingle.get_text()
+        if len(text) < 100:
+            text += pSingle.get_text()
     return text
 
 
@@ -48,7 +48,7 @@ if __name__ == '__main__':
                 title = "Top Stories %s" % i
                 if send_mail(mail_server, mail_user["name"], mail_user['pass'], mail_to, title, html_text):
                     print("发送成功")
-                    time.sleep(20)
+                    time.sleep(2)
                 else:
                     print("发送失败")
 

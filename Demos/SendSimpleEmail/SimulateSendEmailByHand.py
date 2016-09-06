@@ -1,44 +1,47 @@
 # -*- coding: utf-8 -*-
-# import smtplib
-# from email.MIMEMultipart import MIMEMultipart
-# from email.MIMEText import MIMEText
-
-
-# def send_mail(mail_server, mail_user, mail_pass, mail_to, subject, content):
-#     msg = MIMEMultipart()
-#     msg['From'] = mail_user
-#     msg['To'] = mail_to
-#     msg['Subject'] = subject
-#     msg.attach(MIMEText(content.encode('utf-8'), 'plain', 'utf-8'))
-#
-#     try:
-#         mailServer = smtplib.SMTP(mail_server, 587)
-#         mailServer.ehlo()
-#         mailServer.starttls()
-#         mailServer.ehlo()
-#         # mailServer.set_debuglevel(1)
-#         mailServer.login(mail_user, mail_pass)
-#         mailServer.sendmail(mail_user, mail_to, msg.as_string())
-#         mailServer.close()
-#
-#         return True
-#     except Exception as e:
-#         print(str(e))
-#         return False
-
-
+# https://github.com/SavinaRoja/PyUserInput/wiki/Installation
+import time
 from pymouse import PyMouse
 from pykeyboard import PyKeyboard
 
 m = PyMouse()
 k = PyKeyboard()
 
-def simple_test():
-    print("start test")
-    x_dim, y_dim = m.screen_size()
-    m.click(x_dim/2, y_dim/2)
-    k.type_string('hello, word!')
-    print("end test")
+# only support English for now.
+def send_mail(mail_server, mail_user, mail_pass, mail_to, subject, content):
+    print("send_mail")
+    try:
+        # click send mail button
+        m.click(1920 + 162, 107)
+        time.sleep(2)
 
+        # click input send to
+        m.click(1920 + 260, 163)
+        time.sleep(1)
+        k.type_string(mail_to)
+        time.sleep(1)
 
-simple_test()
+        # click input theme, click twice avoid the user info dialog break our logic
+        m.click(1920 + 260, 206)
+        time.sleep(1)
+        m.click(1920 + 260, 206)
+        time.sleep(1)
+        k.type_string(subject)
+        time.sleep(1)
+
+        # click input content
+        m.click(1920 + 260, 350)
+        time.sleep(1)
+        k.type_string(content)
+        time.sleep(1)
+
+        # click send mail
+        m.click(1920 + 140, 118)
+        time.sleep(1)
+
+        # back to home
+        m.click(1920 + 80, 68)
+        time.sleep(2)
+        return True
+    except:
+        return False
